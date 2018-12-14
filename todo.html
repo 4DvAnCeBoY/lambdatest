@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Todo sample page - lambdatest.com</title>
+<title>Sample page - lambdatest.com</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -31,25 +31,25 @@ input[type=checkbox]
 
 
 <script type="text/javascript">
-angular.module('todoApp', [])
-  .controller('TodoListController', function() {
-    var todoList = this;
-    todoList.todos = [
-      {text:'List Item 1', done:false, name: 'todo-1'},
-      {text:'List Item 2', done:false, name: 'todo-2'},
-      {text:'List Item 3', done:false, name: 'todo-3'},
-      {text:'List Item 4', done:false, name: 'todo-4'},
-      {text:'List Item 5', done:false, name: 'todo-5'}];
+angular.module('sampleApp', [])
+  .controller('SampleListController', function() {
+    var sampleList = this;
+    sampleList.sampletodos = [
+      {text:'First Item', done:false, name: 'li1'},
+      {text:'Second Item', done:false, name: 'li2'},
+      {text:'Third Item', done:false, name: 'li3'},
+      {text:'Fourth Item', done:false, name: 'li4'},
+      {text:'Fifth Item', done:false, name: 'li5'}];
 
-    todoList.addTodo = function() {
-      todoList.todos.push({text:todoList.todoText, done:false});
-      todoList.todoText = '';
+    sampleList.addsampletodo = function() {
+      sampleList.sampletodos.push({text:sampleList.sampletodoText, done:false});
+      sampleList.sampletodoText = '';
     };
 
-    todoList.remaining = function() {
+    sampleList.remaining = function() {
       var count = 0;
-      angular.forEach(todoList.todos, function(todo) {
-        count += todo.done ? 0 : 1;
+      angular.forEach(sampleList.sampletodos, function(sampletodo) {
+        count += sampletodo.done ? 0 : 1;
       });
       return count;
     };
@@ -61,22 +61,22 @@ angular.module('todoApp', [])
 
 <body>
 
-	<div ng-app="todoApp">
+	<div ng-app="sampleApp">
   	<div class="container">
-  		<h2>Todo Sample</h2>
-  		<div class="well" ng-controller="TodoListController as todoList">
-  			<span>{{todoList.remaining()}} of {{todoList.todos.length}} remaining</span>
+  		<h2>sampletodo Sample</h2>
+  		<div class="well" ng-controller="SampleListController as sampleList">
+  			<span>{{sampleList.remaining()}} of {{sampleList.sampletodos.length}} remaining</span>
 
   			<ul class="list-unstyled">
-  				<li ng-repeat="todo in todoList.todos">
-  					<input type="checkbox" ng-model="todo.done" name="{{todo.name}}">
-  					<span class="done-{{todo.done}}">{{todo.text}}</span>
+  				<li ng-repeat="sampletodo in sampleList.sampletodos">
+  					<input type="checkbox" ng-model="sampletodo.done" name="{{sampletodo.name}}">
+  					<span class="done-{{sampletodo.done}}">{{sampletodo.text}}</span>
   				</li>
   			</ul>
 
-  			<form ng-submit="todoList.addTodo()">
-  				<input type="text" id="todotext" ng-model="todoList.todoText"  size="30"
-  				 placeholder="Let me know more">
+  			<form ng-submit="sampleList.addsampletodo()">
+  				<input type="text" id="sampletodotext" ng-model="sampleList.sampletodoText"  size="30"
+  				 placeholder="Want to add more">
   				<input class="btn btn-primary" type="submit" id="addbutton" value="add">
   			</form>
   		</div>
