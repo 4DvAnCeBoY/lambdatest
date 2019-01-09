@@ -40,7 +40,7 @@ angular.module('todoApp', [])
       {text:'List Item 4', done:false, name: 'todo-4'},
       {text:'List Item 5', done:false, name: 'todo-5'}];
     todoList.addTodo = function() {
-      todoList.todos.push({text:todoList.todoText, done:false, name:'todo-'+count});
+      todoList.todos.push({text:todoList.todoText, done:false, name:'todo-'+todoList.todos.length});
       todoList.todoText = '';
     };
     todoList.remaining = function() {
